@@ -7,6 +7,7 @@ public class FirstWebInitializer extends AbstractAnnotationConfigDispatcherServl
         return new Class<?>[] {RootConfig.class};
     }
 
+
     protected Class<?>[] getServletConfigClasses() {
         return new Class<?>[] {WebConfig.class};
     }

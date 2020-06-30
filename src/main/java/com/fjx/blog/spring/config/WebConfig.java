@@ -8,8 +8,6 @@ import org.springframework.web.servlet.config.annotation.*;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @Configuration
-@EnableWebMvc
-@ComponentScan("com.fjx.blog.spring")
 public class WebConfig implements WebMvcConfigurer{
 
     @Bean
@@ -24,5 +22,4 @@ public class WebConfig implements WebMvcConfigurer{
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
         configurer.enable();
     }
-
 }
