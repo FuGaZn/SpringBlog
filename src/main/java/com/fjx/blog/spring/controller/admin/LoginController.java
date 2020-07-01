@@ -25,7 +25,7 @@ public class LoginController {
     @Autowired
     UserService userService;
 
-    @RequestMapping("/login")
+    @RequestMapping({"/login","/"})
     public String login(){
         return "/admin/login";
     }
@@ -68,8 +68,6 @@ public class LoginController {
         }
 
         String result = new JSONObject(map).toString();
-        System.out.println("================================= ");
-        System.out.println(result);
         return result;
 
     }

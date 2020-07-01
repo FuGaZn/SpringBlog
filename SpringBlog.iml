@@ -4,10 +4,11 @@
     <facet type="web" name="Web">
       <configuration>
         <webroots>
-          <root url="file://$MODULE_DIR$/web" relative="/" />
+          <root url="file://$MODULE_DIR$/src/main/web" relative="/" />
         </webroots>
         <sourceRoots>
-          <root url="file://$MODULE_DIR$/src" />
+          <root url="file://$MODULE_DIR$/src/main/java" />
+          <root url="file://$MODULE_DIR$/src/main/resources" />
         </sourceRoots>
       </configuration>
     </facet>
@@ -38,10 +39,7 @@
     </orderEntry>
     <orderEntry type="module-library" exported="">
       <library>
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/web/lib/json-lib-2.2.3-jdk15.jar!/" />
-        </CLASSES>
-        <JAVADOC />
+                <JAVADOC />
         <SOURCES />
       </library>
     </orderEntry>
