@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Blog</title>
+    <title>登陆-Blog</title>
     <link rel="stylesheet" href="/resource/assets/plugin/font-awesome/css/font-awesome.min.css">
     <link rel="shortcut icon" href="/resource/assets/img/logo.png">
     <link rel='stylesheet' id='dashicons-css'  href='/resource/assets/plugin/login/dashicons.min.css' type='text/css' media='all' />

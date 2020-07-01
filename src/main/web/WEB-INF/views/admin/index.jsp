@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Back</title>
+    <title>文章管理-Blog</title>
 </head>
 <body>
 <h1>Admin page</h1>
