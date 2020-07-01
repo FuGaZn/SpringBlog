@@ -1,5 +1,7 @@
 package com.fjx.blog.spring.config;
 
+import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 public class FirstWebInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {

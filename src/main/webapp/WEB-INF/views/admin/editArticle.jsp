@@ -59,9 +59,9 @@
 
 <div style="height: 50px;">
     <a style="margin-left: 30px;font-size: 22px; font-weight: bold; color: #555555" href="/admin">文章管理</a>
-    <input class="titleInput" placeholder="输入文章标题"/>
-    <input class="saveArticle" type="button" value="保存文章" onclick="saveArticle()"/>
-    <input class="publishArticle" type="button" value="发布文章"/>
+    <input class="titleInput" id="titleInput" placeholder="输入文章标题"/>
+    <input id="saveArticle" class="saveArticle" type="button" value="保存文章"/>
+    <input id="publishArticle" class="publishArticle" type="button" value="发布文章"/>
 
 </div>
 
@@ -93,8 +93,33 @@
         });
     });
 
-    function saveArticle() {
+    $('#saveArticle').click(function () {
+        var title = $('#titleInput').val()
         var blogcontent = encodeURIComponent(editor.getMarkdown())
+        var authorName = ''
+        var obj = {
+            'title':title,
+            'authorName':authorName,
+            'content':blogcontent,
+            'status':'0'
+        }
+        console.log(title+" "+blogcontent)
+        $.ajax({
+            type: "POST",
+            url: '/admin/save',
+            contentType: "application/x-www-form-urlencoded; charset=utf-8",
+            data: obj,
+            dataType: 'json',
+            success:function (data) {
+                alert(data)
+                window.location.href='/admin'
+            }
+        })
+    })
+
+
+    function publishArticle() {
+        var title = $('#titleInput')
     }
 
 </script>

@@ -1,11 +1,12 @@
 package com.fjx.blog.spring.entity;
 
+import javax.persistence.*;
 import java.util.Date;
 
 public class User {
-    int uid;
-    String name;
-    String password;
+    private int uid;
+    private String name;
+    private String password;
     private String userLastLoginIp;
 
     private Date userLastLoginTime;

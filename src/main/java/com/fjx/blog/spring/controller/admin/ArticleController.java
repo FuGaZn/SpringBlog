@@ -1,13 +1,15 @@
 package com.fjx.blog.spring.controller.admin;
 
+import com.fjx.blog.spring.entity.Article;
+import com.fjx.blog.spring.service.ArticleService;
+import com.fjx.blog.spring.utils.ObjectConvert;
+import com.fjx.blog.spring.vo.ArticleVO;
 import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.util.FileSystemUtils;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,9 +19,15 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
 import java.nio.file.Files;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 @Controller
 public class ArticleController {
+ //   @Autowired
+  //  ArticleService articleService;
+
     @RequestMapping(value = "/admin/uploadFile", method = RequestMethod.POST)
     @ResponseBody
     public String uploadFile(HttpServletRequest request, HttpServletResponse response,
@@ -56,5 +64,18 @@ public class ArticleController {
         }
 
         return jsonObject.toString();
+    }
+
+    @RequestMapping(value = "/admin/save",method = RequestMethod.POST)
+    @ResponseBody
+    public String saveArticle(ArticleVO obj){
+        System.out.println("================article");
+        System.out.println(obj.getStatus());
+        Article article = ObjectConvert.convertVO(obj);
+        article.setPublishTime(new Date());
+   //     articleService.saveArticle(article);
+        Map<String,Object> map = new HashMap();
+        map.put("1","success");
+        return new JSONObject(map).toString();
     }
 }

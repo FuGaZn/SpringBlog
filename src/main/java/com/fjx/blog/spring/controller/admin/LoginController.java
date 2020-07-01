@@ -33,7 +33,6 @@ public class LoginController {
     @RequestMapping(value = "/loginVerify",method = RequestMethod.POST)
     @ResponseBody
     public String loginVerify(HttpServletRequest request, HttpServletResponse response) {
-        System.out.println("=======================verify========================");
         Map<String, Object> map = new HashMap();
         String username = request.getParameter("username");
         String password = request.getParameter("password");
