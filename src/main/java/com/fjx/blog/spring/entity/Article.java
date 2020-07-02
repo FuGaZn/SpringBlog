@@ -3,31 +3,16 @@ package com.fjx.blog.spring.entity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
 import javax.persistence.*;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
-@Entity
 public class Article {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column
     private int aid;
-
-    @Column
     private String title;
-
-    @Column
-    private String authorName;
-
-    @Column
+    private String author;
     private Date publishTime;
-
-    @Column
     private int viewCount; //浏览人数
-
-    @Column
     private String content;
-
-    @Column
     private int status;
 
     public int getStatus() {
@@ -54,12 +39,12 @@ public class Article {
         this.title = title;
     }
 
-    public String getAuthorName() {
-        return authorName;
+    public String getAuthor() {
+        return author;
     }
 
-    public void setAuthorName(String authorName) {
-        this.authorName = authorName;
+    public void setAuthor(String author) {
+        this.author = author;
     }
 
     public Date getPublishTime() {

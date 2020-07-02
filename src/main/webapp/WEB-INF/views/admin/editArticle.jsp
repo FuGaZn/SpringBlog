@@ -1,4 +1,7 @@
-<%--
+<%@ page import="com.fjx.blog.spring.entity.User" %>
+<%@ page import="com.fjx.blog.spring.entity.Article" %>
+<%@ page import="org.springframework.ui.Model" %>
+<%@ page import="java.net.URLDecoder" %><%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 2020/7/1
@@ -15,7 +18,10 @@
     <script src="/resource/assets/editormd/editormd.min.js"></script>
     <style type="text/css">
         .titleInput{
-            color: #636363;font-size: 20px; margin-left: 30px; width: 60%; padding: 8px;border: 1px solid #adadad;border-radius: 3px
+            color: #636363;font-size: 20px; margin-left: 20px; width: 50%; padding: 8px;border: 1px solid #adadad;border-radius: 3px
+        }
+        .authorInput{
+            color: #636363;font-size: 18px; margin-left: 5px; width: 140px; padding: 8px;border: 1px solid #adadad;border-radius: 3px
         }
         .publishArticle{ /* 按钮美化 */
             margin-left: 10px;
@@ -54,12 +60,22 @@
     </style>
 </head>
 <body>
-
-
+<%
+    User user = (User) request.getSession().getAttribute("user");
+    String name = user.getName();
+    Article myArticle = (Article) request.getAttribute("article");
+    String content = "";
+    int aid = 0;
+    if (myArticle!=null) {
+        content = URLDecoder.decode(myArticle.getContent(), "UTF-8");
+        aid = myArticle.getAid();
+    }
+%>
 
 <div style="height: 50px;">
     <a style="margin-left: 30px;font-size: 22px; font-weight: bold; color: #555555" href="/admin">文章管理</a>
-    <input class="titleInput" id="titleInput" placeholder="输入文章标题"/>
+    <input class="titleInput" id="titleInput" placeholder="输入文章标题" value="${article.title}"/>
+    <input class="authorInput" id="authorInput" placeholder="作者" value="${article.author}"/>
     <input id="saveArticle" class="saveArticle" type="button" value="保存文章"/>
     <input id="publishArticle" class="publishArticle" type="button" value="发布文章"/>
 
@@ -71,7 +87,7 @@
         <!--MarkDown的id标志 -->
         <div id="my-editormd">
             <!-- 书写与实时显示的textarea -->
-            <textarea id="my-editormd-markdown-doc" name="my-editormd-markdown-doc" style="display:none;"></textarea>
+            <textarea id="my-editormd-markdown-doc" name="my-editormd-markdown-doc" style="display:none;"><%=content%></textarea>
             <!-- 用于后端获取md稳当内容，Java中：request.getParameter("my-editormd-html-code")。 -->
             <textarea id="my-editormd-html-code" name="my-editormd-html-code" style="display:none;"></textarea>
         </div>
@@ -79,7 +95,7 @@
 </div>
 </body>
 <script type="text/javascript">
-    var editor;
+   var editor;
     $(function() {
         editor = editormd("my-editormd", {//注意1：这里的就是上面的DIV的id属性值
             width   : "96%",
@@ -96,14 +112,18 @@
     $('#saveArticle').click(function () {
         var title = $('#titleInput').val()
         var blogcontent = encodeURIComponent(editor.getMarkdown())
-        var authorName = ''
+        var authorName = $('#authorInput').val()
+        if (authorName == null || authorName.length == 0) {
+            authorName ='<%=name%>'
+        }
         var obj = {
             'title':title,
-            'authorName':authorName,
+            'author':authorName,
             'content':blogcontent,
-            'status':'0'
+            'status':'0',
+            'aid':'0'
         }
-        console.log(title+" "+blogcontent)
+        obj.aid = '<%=aid%>'
         $.ajax({
             type: "POST",
             url: '/admin/save',
@@ -111,16 +131,37 @@
             data: obj,
             dataType: 'json',
             success:function (data) {
-                alert(data)
                 window.location.href='/admin'
             }
         })
     })
 
-
-    function publishArticle() {
-        var title = $('#titleInput')
-    }
+    $('#publishArticle').click(function () {
+        var title = $('#titleInput').val()
+        var blogcontent = encodeURIComponent(editor.getMarkdown())
+        var authorName = $('#authorInput').val()
+        if (authorName == null || authorName.length == 0) {
+            authorName ='<%=name%>'
+        }
+        var obj = {
+            'title':title,
+            'author':authorName,
+            'content':blogcontent,
+            'status':'1',
+            'aid':'0'
+        }
+        obj.aid = '<%=aid%>'
+        $.ajax({
+            type: "POST",
+            url: '/admin/save',
+            contentType: "application/x-www-form-urlencoded; charset=utf-8",
+            data: obj,
+            dataType: 'json',
+            success:function (data) {
+                window.location.href='/admin'
+            }
+        })
+    })
 
 </script>
 

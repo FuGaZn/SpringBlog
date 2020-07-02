@@ -5,6 +5,15 @@ public class ArticleVO {
     String author;
     String content;
     int status;
+    int aid;
+
+    public int getAid() {
+        return aid;
+    }
+
+    public void setAid(int aid) {
+        this.aid = aid;
+    }
 
     public String getTitle() {
         return title;

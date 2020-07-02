@@ -1,4 +1,4 @@
-package com.fjx.blog.spring.controller.admin;
+package com.fjx.blog.spring.controller.home;
 
 import com.fjx.blog.spring.entity.Article;
 import com.fjx.blog.spring.service.ArticleService;
@@ -8,22 +8,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.List;
-
-/**
- * @author fujiaxing
- * 后台主界面
- */
 @Controller
-public class AdminController {
+public class ArticleShowController {
     @Autowired
     ArticleService articleService;
 
-    @RequestMapping("/admin")
-    public String admin(Model model){
-        List<Article> articleList = articleService.getAllArticles();
-        model.addAttribute("articleList", articleList);
-        return "/admin/index";
+    @RequestMapping(value = "/article/{id}")
+    public String articleDetails(@PathVariable("id") int id, Model model){
+        Article article = articleService.getArticleById(id);
+        model.addAttribute("article", article);
+        return "/home/articleDetails";
     }
-
 }

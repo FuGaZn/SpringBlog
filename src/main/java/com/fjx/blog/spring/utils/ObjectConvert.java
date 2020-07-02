@@ -7,10 +7,11 @@ public class ObjectConvert {
 
     public static Article convertVO(ArticleVO vo){
         Article article = new Article();
-        article.setAuthorName(vo.getAuthor());
+        article.setAuthor(vo.getAuthor());
         article.setContent(vo.getContent());
         article.setStatus(vo.getStatus());
         article.setTitle(vo.getTitle());
+        article.setAid(vo.getAid());
         return article;
     }
 }

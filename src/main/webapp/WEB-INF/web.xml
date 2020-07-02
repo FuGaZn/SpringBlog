@@ -5,18 +5,9 @@
          http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
     <display-name>SpringBlog</display-name>
 
-
-    <servlet-mapping>
-        <servlet-name>default</servlet-name>
-        <url-pattern>*.jpg</url-pattern>
-        <url-pattern>*.png</url-pattern>
-    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>default</servlet-name>
         <url-pattern>*.js</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>default</servlet-name>
         <url-pattern>*.css</url-pattern>
         <url-pattern>*.woff</url-pattern>
         <url-pattern>*.svg</url-pattern>
@@ -24,6 +15,9 @@
         <url-pattern>*.woff2</url-pattern>
         <url-pattern>*.eot</url-pattern>
         <url-pattern>*.otf</url-pattern>
-
+        <url-pattern>*.ico</url-pattern>
+        <url-pattern>*.gif</url-pattern>
+        <url-pattern>*.jpg</url-pattern>
+        <url-pattern>*.png</url-pattern>
     </servlet-mapping>
 </web-app>

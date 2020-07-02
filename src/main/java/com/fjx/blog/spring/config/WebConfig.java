@@ -10,6 +10,7 @@ import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.*;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
+import org.springframework.web.servlet.view.JstlView;
 
 @Configuration
 @ComponentScan("com.fjx.blog.spring")
@@ -28,6 +29,7 @@ public class WebConfig implements WebMvcConfigurer {
         InternalResourceViewResolver resolver = new InternalResourceViewResolver();
         resolver.setPrefix("/WEB-INF/views/");
         resolver.setSuffix(".jsp");
+        resolver.setViewClass(JstlView.class);
        // resolver.setPrefix(propertiesConfig.getWebViewPrefix());
       //  resolver.setSuffix(propertiesConfig.getWebViewSuffix());
         resolver.setExposeContextBeansAsAttributes(true);

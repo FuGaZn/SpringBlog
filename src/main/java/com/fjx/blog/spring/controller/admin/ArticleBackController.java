@@ -1,12 +1,15 @@
 package com.fjx.blog.spring.controller.admin;
 
 import com.fjx.blog.spring.entity.Article;
+import com.fjx.blog.spring.entity.User;
+import com.fjx.blog.spring.mapper.ArticleMapper;
 import com.fjx.blog.spring.service.ArticleService;
 import com.fjx.blog.spring.utils.ObjectConvert;
 import com.fjx.blog.spring.vo.ArticleVO;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.util.FileSystemUtils;
 import org.springframework.web.bind.annotation.*;
@@ -24,9 +27,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Controller
-public class ArticleController {
- //   @Autowired
-  //  ArticleService articleService;
+public class ArticleBackController {
+    @Autowired
+    ArticleService articleService;
 
     @RequestMapping(value = "/admin/uploadFile", method = RequestMethod.POST)
     @ResponseBody
@@ -69,13 +72,24 @@ public class ArticleController {
     @RequestMapping(value = "/admin/save",method = RequestMethod.POST)
     @ResponseBody
     public String saveArticle(ArticleVO obj){
-        System.out.println("================article");
-        System.out.println(obj.getStatus());
         Article article = ObjectConvert.convertVO(obj);
         article.setPublishTime(new Date());
-   //     articleService.saveArticle(article);
+
+        articleService.saveArticle(article);
         Map<String,Object> map = new HashMap();
         map.put("1","success");
         return new JSONObject(map).toString();
+    }
+
+    @RequestMapping("/admin/edit")
+    public String create(){
+        return "/admin/editArticle";
+    }
+
+    @RequestMapping("/admin/edit/{id}")
+    public String edit(@PathVariable("id") int id,Model model){
+        Article article = articleService.getArticleById(id);
+        model.addAttribute("article", article);
+        return "/admin/editArticle";
     }
 }
