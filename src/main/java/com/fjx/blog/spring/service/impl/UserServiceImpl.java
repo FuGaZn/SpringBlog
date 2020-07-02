@@ -13,19 +13,24 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserMapper userMapper;
 
-    public User getUserByName(String name) {
-        List<User> users = userMapper.selectAll();
-        for (User u: users)
-            System.out.println(u.getName());
-      //  System.out.println(users.size());
-        return null;
+    @Override
+    public User getUserByKey(String key) {
+        List<User> users = userMapper.selectUserByKey(key);
+        if (users == null || users.size() == 0){
+            User user =new User();
+            user = new User();
+            user.setId(0);
+            user.setUkey("Yui");
+            user.setName("Yui");
+            user.setPassword("123456");
+            save(user);
+            return user;
+        }else
+            return users.get(0);
+
     }
 
     public void save(User user) {
-        System.out.println("=============save=============");
-        System.out.println(user.getName());
-       // userDao.save(user);
         int i = userMapper.save(user);
-        System.out.println("i "+i);
     }
 }

@@ -34,10 +34,10 @@ public class LoginController {
     @ResponseBody
     public String loginVerify(HttpServletRequest request, HttpServletResponse response) {
         Map<String, Object> map = new HashMap();
-        String username = request.getParameter("username");
+        String username = request.getParameter("ukey");
         String password = request.getParameter("password");
         String rememberme = request.getParameter("rememberme");
-        User user = userService.getUserByName(username);
+        User user = userService.getUserByKey(username);
         if (user == null) {
             map.put("code", 0);
             map.put("msg", "用户名无效！");
@@ -53,7 +53,7 @@ public class LoginController {
             request.getSession().setAttribute("user", user);
             if (rememberme != null) {
                 //创建两个Cookie对象
-                Cookie nameCookie = new Cookie("username", username);
+                Cookie nameCookie = new Cookie("ukey", username);
                 //设置Cookie的有效期为3天
                 nameCookie.setMaxAge(60 * 60 * 24 * 3);
                 Cookie pwdCookie = new Cookie("password", password);

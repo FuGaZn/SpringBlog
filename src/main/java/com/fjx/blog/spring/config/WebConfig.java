@@ -26,7 +26,7 @@ public class WebConfig implements WebMvcConfigurer {
     @Bean
     public ViewResolver viewResolver() {
         InternalResourceViewResolver resolver = new InternalResourceViewResolver();
-        resolver.setPrefix("WEB-INF/views");
+        resolver.setPrefix("/WEB-INF/views/");
         resolver.setSuffix(".jsp");
        // resolver.setPrefix(propertiesConfig.getWebViewPrefix());
       //  resolver.setSuffix(propertiesConfig.getWebViewSuffix());
@@ -54,6 +54,7 @@ public class WebConfig implements WebMvcConfigurer {
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
         configurer.enable();
     }
+
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {

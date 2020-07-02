@@ -83,12 +83,12 @@
 <div id="login" style="position: absolute; width: 300px;height: 250px;background-color:rgba(246,246,246,0.5);top: 120px;left: 50%;margin-left: -150px">
     <h1 style="width: 300px; text-align: center;margin-top: -60px">后台管理</h1>
     <%
-        String username = "", password = "";
+        String ukey = "", password = "";
         Cookie[] cookies = request.getCookies();
         if (cookies!=null){
             for (int i = 0; i < cookies.length; i++) {//对cookies中的数据进行遍历，找到用户名、密码的数据
-                if ("username".equals(cookies[i].getName())) {
-                    username = cookies[i].getValue();
+                if ("ukey".equals(cookies[i].getName())) {
+                    ukey = cookies[i].getValue();
                 } else if ("password".equals(cookies[i].getName())) {
                     password = cookies[i].getValue();
                 }
@@ -96,7 +96,7 @@
         }
     %>
     <form name="loginForm" id="loginForm" method="post">
-        <input type="text" placeholder="用户名" name="username" id="user_login" class="input" value="<%=username%>" size="20" required/>
+        <input type="text" placeholder="用户名" name="username" id="user_login" class="input" value="<%=ukey%>" size="20" required/>
         <input type="password" placeholder="密码" name="password" id="user_pass" class="input" value="<%=password%>" size="20" required/>
         <p class="forgetmenot"><label for="rememberme"><input name="rememberme" type="checkbox" id="rememberme" value="1" checked /> 记住密码</label></p>
         <a class="submit">登陆

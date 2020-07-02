@@ -1,17 +1,26 @@
 package com.fjx.blog.spring.entity;
 
 public class User {
-    private int uid;
+    private int id;
     private String name;
+    private String ukey;
     private String password;
     private String userLastLoginIp;
 
-    public int getUid() {
-        return uid;
+    public String getUkey() {
+        return ukey;
     }
 
-    public void setUid(int uid) {
-        this.uid = uid;
+    public void setUkey(String ukey) {
+        this.ukey = ukey;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {

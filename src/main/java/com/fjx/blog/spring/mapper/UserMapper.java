@@ -11,12 +11,13 @@ import java.util.List;
 @Component(value = "userMapper")
 public interface UserMapper {
 
-    @Select("select * from user")
+    @Select("select * from users")
     List<User> selectAll();
 
-    @Select("select * from user where name = #{username}")
-    List<User> selectUser(String username);
+    @Select("select * from users where ukey = #{ukey}")
+    List<User> selectUserByKey(String ukey);
 
-    @Insert("insert into user(uid,name,password,userLastLoginIp) values(#{id},#{name},#{password},#{userLastLoginIp})")
-    int save(User user);
+    @Insert("insert into users values(#{user.id},#{user.ukey},#{user.name},#{user.password},#{user.userLastLoginIp})")
+    @Options(useGeneratedKeys = true)
+    int save(@Param("user") User user);
 }
