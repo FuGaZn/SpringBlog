@@ -15,7 +15,7 @@ public interface UserMapper {
     List<User> selectAll();
 
     @Select("select * from user where name = #{username}")
-    User selectUser(String username);
+    List<User> selectUser(String username);
 
     @Insert("insert into user(uid,name,password,userLastLoginIp) values(#{id},#{name},#{password},#{userLastLoginIp})")
     int save(User user);

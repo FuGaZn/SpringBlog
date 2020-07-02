@@ -11,7 +11,7 @@ import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 public class PropertiesConfig {
     @Value("${spring.datasource.url}")
     private String url;
-    @Value("${spring.datasource.driver-class-name}")
+    @Value("${spring.datasource.driver}")
     private String driver;
     @Value("${spring.datasource.username}")
     private String username;

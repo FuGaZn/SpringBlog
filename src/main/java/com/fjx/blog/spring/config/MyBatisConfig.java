@@ -4,6 +4,7 @@ import com.alibaba.druid.pool.DruidDataSource;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -17,11 +18,11 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import javax.sql.DataSource;
 
 @Configuration
-@PropertySource("classpath:application.properties")
 @MapperScan("com.fjx.blog.spring.mapper")
-@EnableTransactionManagement
-@ComponentScan
 public class MyBatisConfig {
+
+    @Autowired
+    PropertiesConfig propertiesConfig;
 
     @Bean
     public DataSource dataSource(PropertiesConfig propertiesConfig) {
@@ -30,13 +31,17 @@ public class MyBatisConfig {
         dataSource.setPassword(propertiesConfig.getPassword());
         dataSource.setUrl(propertiesConfig.getUrl());
         dataSource.setDriverClassName(propertiesConfig.getDriver());
+       // dataSource.setUsername("root");
+      //  dataSource.setPassword("161250049");
+       // dataSource.setUrl("jdbc:mysql://127.0.0.1:3306/springblog");
+       // dataSource.setDriverClassName("com.mysql.jdbc.Driver");
         return dataSource;
     }
 
     @Bean
     public SqlSessionFactory sqlSessionFactory() throws Exception  {
         SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
-        sessionFactory.setDataSource(dataSource(new PropertiesConfig()));
+        sessionFactory.setDataSource(dataSource(propertiesConfig));
         return sessionFactory.getObject();
     }
 

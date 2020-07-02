@@ -14,20 +14,11 @@ public class UserServiceImpl implements UserService {
     private UserMapper userMapper;
 
     public User getUserByName(String name) {
-        System.out.println(userMapper == null);
-        System.out.println(userMapper.selectAll() == null);
+        List<User> users = userMapper.selectAll();
+        for (User u: users)
+            System.out.println(u.getName());
       //  System.out.println(users.size());
-        User u = userMapper.selectUser("Yui");
-        if (u == null){
-            u = new User();
-            u.setUid(0);
-            u.setName("Yui");
-            u.setPassword("123456");
-            save(u);
-        }
-        User user = userMapper.selectUser(name);
-
-        return user;
+        return null;
     }
 
     public void save(User user) {

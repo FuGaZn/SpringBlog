@@ -61,7 +61,7 @@ public class LoginController {
                 response.addCookie(nameCookie);
                 response.addCookie(pwdCookie);
             }
-            user.setUserLastLoginTime(new Date());
+          //  user.setUserLastLoginTime(new Date());
             user.setUserLastLoginIp(getIpAddr(request));
             userService.save(user);
         }

@@ -85,11 +85,13 @@
     <%
         String username = "", password = "";
         Cookie[] cookies = request.getCookies();
-        for (int i = 0; i < cookies.length; i++) {//对cookies中的数据进行遍历，找到用户名、密码的数据
-            if ("username".equals(cookies[i].getName())) {
-                username = cookies[i].getValue();
-            } else if ("password".equals(cookies[i].getName())) {
-                password = cookies[i].getValue();
+        if (cookies!=null){
+            for (int i = 0; i < cookies.length; i++) {//对cookies中的数据进行遍历，找到用户名、密码的数据
+                if ("username".equals(cookies[i].getName())) {
+                    username = cookies[i].getValue();
+                } else if ("password".equals(cookies[i].getName())) {
+                    password = cookies[i].getValue();
+                }
             }
         }
     %>
