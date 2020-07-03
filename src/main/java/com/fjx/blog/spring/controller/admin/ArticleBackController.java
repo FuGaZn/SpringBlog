@@ -92,4 +92,5 @@ public class ArticleBackController {
         model.addAttribute("article", article);
         return "/admin/editArticle";
     }
+
 }

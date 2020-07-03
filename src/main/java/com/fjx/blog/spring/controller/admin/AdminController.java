@@ -26,4 +26,13 @@ public class AdminController {
         return "/admin/index";
     }
 
+    @RequestMapping("/admin/comment")
+    public String comment(){
+        return "/admin/comment";
+    }
+    @RequestMapping("/admin/category")
+    public String category(){
+        return "/admin/category";
+    }
+
 }

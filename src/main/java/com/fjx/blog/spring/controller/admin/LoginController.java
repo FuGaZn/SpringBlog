@@ -25,7 +25,7 @@ public class LoginController {
     @Autowired
     UserService userService;
 
-    @RequestMapping({"/login","/"})
+    @RequestMapping({"/login"})
     public String login(){
         return "/admin/login";
     }
@@ -89,5 +89,17 @@ public class LoginController {
             }
         }
         return ipAddress;
+    }
+
+    @RequestMapping(value = "/logOut",method = RequestMethod.GET)
+    @ResponseBody
+    public String loginOut(HttpServletRequest request, HttpServletResponse response){
+        request.getSession().removeAttribute("user");
+        Map<String, Object> map = new HashMap();
+        map.put("code", 1);
+        map.put("msg", "");
+
+        String result = new JSONObject(map).toString();
+        return result;
     }
 }

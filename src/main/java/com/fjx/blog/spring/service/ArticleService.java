@@ -13,4 +13,5 @@ public interface ArticleService {
 
     Article getArticleById(int id);
 
+    void addViewCount(int id);
 }

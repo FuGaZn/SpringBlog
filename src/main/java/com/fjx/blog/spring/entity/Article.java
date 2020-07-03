@@ -14,6 +14,15 @@ public class Article {
     private int viewCount; //浏览人数
     private String content;
     private int status;
+    private String contentDecode = "";
+
+    public String getContentDecode() {
+        return contentDecode;
+    }
+
+    public void setContentDecode(String contentDecode) {
+        this.contentDecode = contentDecode;
+    }
 
     public int getStatus() {
         return status;

@@ -102,7 +102,7 @@
         <a class="submit">登陆
             <input type="button" name="wp-submit" id="submit-btn" value="登录" />
         </a>
-        <p id="backtoblog" style="margin-left: 160px;color: black"><a href="/">&larr; 返回到博客</a></p>
+        <p id="backtoblog" style="margin-left: 160px;color: black"><a href="/index">&larr; 返回到博客</a></p>
     </form>
 
 </div>
@@ -128,7 +128,7 @@
                     if(data.code==0) {
                         alert(data.msg);
                     } else {
-                        window.location.href="/admin/edit";
+                        window.location.href="/admin";
                     }
                 },
                 error: function () {

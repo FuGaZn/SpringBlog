@@ -18,10 +18,6 @@ public class WebConfig implements WebMvcConfigurer {
     @Autowired
     private PropertiesConfig propertiesConfig;
 
-    @Bean
-    public SecurityInterceptor securityInterceptor() {
-        return new SecurityInterceptor();
-    }
 
 
     @Bean
@@ -57,15 +53,4 @@ public class WebConfig implements WebMvcConfigurer {
         configurer.enable();
     }
 
-
-    @Override
-    public void addInterceptors(InterceptorRegistry registry) {
-        InterceptorRegistration registration = registry.addInterceptor(securityInterceptor());
-        registration.excludePathPatterns("/home/*");
-        registration.excludePathPatterns("/");
-        registration.excludePathPatterns("/login");
-        registration.addPathPatterns("/admin/*");
-        registration.addPathPatterns("/admin");
-        // super.addInterceptors(registry);
-    }
 }

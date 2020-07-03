@@ -12,7 +12,7 @@
 <head>
     <title>文章管理-Blog</title>
     <style type="text/css">
-        ul{
+        .articleListUL{
             list-style-type: none;
             width: 100%;
             font-family: "Microsoft YaHei"
@@ -23,13 +23,15 @@
             margin-bottom: 10px;
         }
 
+
     </style>
 </head>
-<body>
-<h1>文章管理</h1>
-<div style="position: absolute; left: 250px; width: 60%; top: 50px;">
+<body bgcolor="#D1E7F5">
+<%@include file="component/TopNavBar.jsp"%>
+<%@include file="component/LeftNavBar.jsp"%>
+<div style="position: absolute; left: 250px; width: 60%; top: 80px;">
     <div>
-        <ul>
+        <ul class="articleListUL">
             <c:forEach items="${articleList}" var="a">
                 <li style="margin-top: 20px;position: relative; height: 80px;border-bottom: 1px solid rgba(99,99,99,0.6);">
                     <div style="float: top;">

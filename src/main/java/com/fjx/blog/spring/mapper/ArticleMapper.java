@@ -3,7 +3,9 @@ package com.fjx.blog.spring.mapper;
 import com.fjx.blog.spring.entity.Article;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.PathVariable;
 
+import javax.ws.rs.Path;
 import java.util.List;
 
 @Mapper
@@ -23,4 +25,7 @@ public interface ArticleMapper {
     @Update("update articles set title=#{article.title},author=#{article.author},publishTime=#{article.publishTime}," +
             "content=#{article.content},status=#{article.status} where aid=#{article.aid}")
     int update(@Param("article") Article article);
+
+    @Update("update articles set viewCount=#{article.viewCount} where aid=#{article.aid}")
+    int updateViewCount(@Param("article") Article article);
 }
