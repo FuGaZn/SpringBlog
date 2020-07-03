@@ -36,10 +36,6 @@ public class PropertiesConfig {
         return password;
     }
 
-    public String getMybatisTypeAliasPackage() {
-        return mybatisTypeAliasPackage;
-    }
-
     @Bean
     public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer(){
         return new PropertySourcesPlaceholderConfigurer();

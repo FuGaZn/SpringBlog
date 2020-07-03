@@ -2,7 +2,6 @@ package com.fjx.blog.spring.mapper;
 
 import com.fjx.blog.spring.entity.User;
 import org.apache.ibatis.annotations.*;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

@@ -1,8 +1,5 @@
 package com.fjx.blog.spring.config;
 
-import com.fjx.blog.spring.interceptor.SecurityInterceptor;
-import org.mybatis.spring.annotation.MapperScan;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -15,10 +12,6 @@ import org.springframework.web.servlet.view.JstlView;
 @Configuration
 @ComponentScan("com.fjx.blog.spring")
 public class WebConfig implements WebMvcConfigurer {
-    @Autowired
-    private PropertiesConfig propertiesConfig;
-
-
 
     @Bean
     public ViewResolver viewResolver() {
@@ -41,12 +34,12 @@ public class WebConfig implements WebMvcConfigurer {
         return commonsMultipartResolver;
     }
 
-    /*
+
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler(propertiesConfig.getWebStaticHandler()).addResourceLocations(propertiesConfig.getWebStaticResource());
+        registry.addResourceHandler("/resource/**").addResourceLocations("/resource/asset/");
     }
-    */
+
 
     @Override
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {

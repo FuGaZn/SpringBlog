@@ -12,7 +12,16 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
-    <title>Title</title>
+    <%
+        Article article = (Article) request.getAttribute("article");
+        int aid = article.getAid();
+        String content = URLDecoder.decode(article.getContent(),"UTF-8");
+        String author = article.getAuthor();
+        String title = article.getTitle();
+        int viewCount = article.getViewCount()+1;
+        Date publishTime = article.getPublishTime();
+    %>
+    <title><%=title%>-blog</title>
     <link rel="stylesheet" href="/resource/assets/editormd/css/editormd.min.css"/>
     <link rel="stylesheet" href="/resource/assets/editormd/css/editormd.css"/>
     <script src="/resource/assets/js/jquery.min.js"></script>
@@ -28,15 +37,6 @@
 </head>
 <body bgcolor="#D1E7F5">
 <%@include file="component/TopNavBar.jsp"%>
-<%
-    Article article = (Article) request.getAttribute("article");
-    int aid = article.getAid();
-    String content = URLDecoder.decode(article.getContent(),"UTF-8");
-    String author = article.getAuthor();
-    String title = article.getTitle();
-    int viewCount = article.getViewCount()+1;
-    Date publishTime = article.getPublishTime();
-%>
 <div style="background-color: white;width: 60%;position: absolute;margin: auto;left: 0;right: 0; top: 100px;bottom: 0">
     <div style="position: relative;width: 100%">
         <h1 style="width: 100%; text-align: center"><%=title%></h1>

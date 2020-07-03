@@ -27,10 +27,6 @@ public class MyBatisConfig {
         dataSource.setPassword(propertiesConfig.getPassword());
         dataSource.setUrl(propertiesConfig.getUrl());
         dataSource.setDriverClassName(propertiesConfig.getDriver());
-       // dataSource.setUsername("root");
-      //  dataSource.setPassword("161250049");
-       // dataSource.setUrl("jdbc:mysql://127.0.0.1:3306/springblog");
-       // dataSource.setDriverClassName("com.mysql.jdbc.Driver");
         return dataSource;
     }
 
@@ -48,7 +44,6 @@ public class MyBatisConfig {
         return dataSourceTransactionManager;
 
     }
-
 
     @Bean
     public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
